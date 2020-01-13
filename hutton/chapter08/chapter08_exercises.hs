@@ -43,3 +43,18 @@ balance :: [a] -> NewTree a
 balance [x]    = NewLeaf x
 balance xs     = NewNode (balance fstHalf) (balance sndHalf)
              where (fstHalf, sndHalf) = halves xs      
+
+-- Ex.7 Complete the instance declarations
+data MyMaybe a = MyNothing | MyJust a
+
+instance Eq a => Eq (MyMaybe a) where
+    MyNothing == MyJust _  = False
+    MyJust _  == MyNothing = False
+    MyNothing == MyNothing = True
+    MyJust x  == MyJust y  = x == y
+
+--instance Eq a => Eq [a] where
+--    [] == [] = True
+--    [] == _  = False
+--    _  == [] = False
+--    (x:xs) == (y:ys) = (x == y) && (xs == ys)    
