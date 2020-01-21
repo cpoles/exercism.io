@@ -16,4 +16,5 @@ tree = Node
                               (Node (Leaf) 11 (Leaf)) 12
                               (Node (Leaf) 13 (Leaf)))) 
 
--- Ex 2. 
+-- Ex 2. Complete the instance declaration to make the partially applied function type (a -> ) into a functor:
+
