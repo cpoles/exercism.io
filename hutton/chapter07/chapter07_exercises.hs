@@ -82,10 +82,8 @@ iterate f = unfold (==0) f f
 -- applies its argument function to successive elements in a list
 -- altMap (+10) (+100) [0,1,2,3,4] -> [10,101,12,103,14]
 altMap :: (a -> b) -> (a -> b) -> [a] -> [b]
-altMap _ _ []     = []
-altMap f _ [x]    = [f x]
-altMap f g [x, y] = [f x, g y] 
-altMap f g (x:xs) = f x : g (head xs) : altMap f g (tail xs)
+altMap _ _ []     = [] 
+altMap f g (x:xs) = f x : altMap g f xs
 
 -- Ex. 10
 -- implement the Luhn algorithm using altMap. 
