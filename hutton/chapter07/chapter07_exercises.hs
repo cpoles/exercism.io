@@ -86,17 +86,13 @@ altMap _ _ []     = []
 altMap f g (x:xs) = f x : altMap g f xs
 
 -- Ex. 10
--- implement the Luhn algorithm using altMap. 
-luhnDouble :: Int -> Int
-luhnDouble x = 2 * x
-
+-- implement the Luhn algorithm using altMap.
 greaterThanNine :: Int -> Int
 greaterThanNine x = if x > 9 then x - 9 else x
 
 luhn :: [Int] -> Bool 
 luhn []  = False
-luhn [_] = False
-luhn xs  = sum (altMap (*1) (greaterThanNine . luhnDouble) (reverse xs)) `mod` 10 == 0
+luhn xs  = sum (altMap (greaterThanNine . (*2)) (id) xs) `mod` 10 == 0
 
 
 
